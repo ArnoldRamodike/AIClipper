@@ -7,7 +7,7 @@ import FormField from '../../components/FormField'
 import CustomButton from '../../components/CustomButton'
 import { Link, router } from 'expo-router'
 import { signIn } from '../../lib/appwrite'
-import { useGlobalContext } from '../../context/globalProvider'
+import { useGlobalContext } from '../../context/GlobalProvider'
 
 const SignIn = () => {
   const [isSubmiting, setIsSubmiting] = useState(false);
@@ -25,19 +25,17 @@ const SignIn = () => {
     setIsSubmiting(true);
     try {
       const result = await signIn(form.email, form.password);
-      setUser(result);
-      setIsLoggedIn(true);
-      
+        setUser(result);
+        setIsLoggedIn(true);
 
-      Alert.alert("Success", "User signed in successfully");
-      router.replace('/home')
+        Alert.alert("Success", "User signed in successfully");
+        router.replace('/home')
     } catch (error) {
         Alert.alert('Error', error.message)
     }finally{
       setIsSubmiting(false);
     }
   }
-  console.log(user);
 
   return (
     <SafeAreaView className="bg-primary h-full">
