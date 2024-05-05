@@ -11,7 +11,7 @@ import VideoCard from '../../components/VideoCard'
 
 
 const Home = () => {
-  const {data: posts, isLoading, refetch} = useAppWrite(getAllPosts);
+  const {data: posts, refetch} = useAppWrite(getAllPosts);
   const {data: latestPosts} = useAppWrite(getLatestPosts);
 
   const [refreshing, setRefreshing] = useState(false);
@@ -22,9 +22,7 @@ const Home = () => {
     setRefreshing(false);
   }
 
-  // console.log(posts);
-
-  return (
+  return  (
     <SafeAreaView className='bg-primary h-full'>
       <FlatList 
         data={posts} 
